@@ -79,6 +79,16 @@ I was particularly drawn to the repetitive dot structures and vibrant radial arr
 - Function descriptions are provided for external techniques used (e.g. Perlin noise control);
 - Background textures and particle behaviours are referenced from official p5.js examples and Coding Train tutorials, and are referenced in the comments.
 
+### OpenProcessing Reference
+[Perlin Noise OpenProcessing Reference](images/openprocessing.gif)
+Source: https://openprocessing.org/sketch/2064890
+
+[Perlin Noise OpenProcessing Reference](images/blueperlinnoise.gif)
+Source: https://openprocessing.org/sketch/2018713
+
+- Inspired glowing orbiting particles and central radial lines.
+- Adapted techniques for rotating dot rings and smooth light trails.
+
 ---
 
 ## Conclusion
