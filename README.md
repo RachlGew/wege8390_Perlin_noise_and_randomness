@@ -1,44 +1,57 @@
-# Generative Perlin Wheel: Animated Abstract Visualization
+# Generative Perlin Wheel: "Shimmering Life Layers" 
 This project is a generative art work implemented using p5.js, inspired by Yayoi Kusama's Polka Dot Art and Pacita Abad's Wheels of Fortune. The work drives multiple visual elements through Perlin noise, making them flow, breathe, and glow in the picture, creating a dynamic picture with a sense of meditation, rhythm, and depth.
+
+---
 
 ## Interaction Instructions
 There are **no required interactions** — just open the page and let the animation evolve:
-1. Open the project in Visual Studio Code.
-2. Load the `index.html` file and choose `Open with Live Server`.
-3. The animation will start automatically—there is no interaction required.
-4. Watch as the screen slowly transforms with organic movement driven by Perlin noise. Let it play for at least 10 seconds to observe the slow transitions and generative detail.
+1. Open project in **Visual Studio Code**  
+2. Right-click `index.html` → **Open with Live Server**  
+3. Animation auto-plays upon loading  
+4. Observe organic evolution: forms continuously generate, grow, and fade  
 
-# Individual Approach
+---
 
-I focused on **Perlin noise** and **controlled randomness** as the main drivers of animation. Rather than using user interaction or music, my work explores how noise-based algorithms can simulate natural, slow-moving, organic visuals.
+## Individual Approach
 
-### Perlin Noise as Creative Driver
-- Perlin noise was used to animate movement, shape modulation, and directional flow in `NoiseBlob`, `Spark`, and background elements.
+This work is a generative animation based on **Perlin noise** and **randomness**, exploring the visual metaphor of ‘life, time and memory’. The elements in the image are like free-floating particles, a growing energy field and a sedimentary layer of memories, which together form a static and dynamic life system.
 
-- Unlike true randomness, Perlin noise produces **coherent**, **smooth variations** over time and space, which mimics natural motion like drifting clouds or flowing energy.
+### Perlin Noise Animation System
+The entire animation system is designed around **Perlin noise**, which I used to:
 
-- Each blob's radius, position drift, and decorative dot rings are all noise-influenced, creating consistent but unpredictable evolution.
+- Control the organic motion of all elements
+- Create smooth pulsation and rotation
+- Generate coherent background texture
+- Introduce subtle variation in glow, timing, and drift
 
 ### Unique Animation Strategy
 
-For my contribution, I focused entirely on using **Perlin noise** as the core animation driver.
+While the `Spark`, `NoiseBlob`, and other elements were part of our group codebase, I made substantial structural and expressive refinements in my personal version:
 
-**What I animated**:
-- **Position**, **radius**, and **dot orbit structure** of custom elements such as `NoiseBlob`, `Radiant`, and `Hole`.
-- Animated **textures**, **rotations**, and **glow behavior** using continuous noise input.
+### 1. Custom Redesign of the `Spark` Particle System
 
-**How it's unique** from other group members:
-- While others focused on user interaction (clicks, mouse drags), audio input, or shape transformations,
-- My implementation emphasizes **natural, noise-driven motion**, **non-repetitive visual flow**, and **painterly procedural dots**.
-- Each component (blobs, radiants, holes, sparks) uses a **different Perlin noise parameter set** for unique, layered movement.
+- I adjusted the **noise-driven movement logic** and **life cycle oscillation**.
+- Sparks now include two distinct types (lines/dots), each rendered with glow and fade.
+- Motion is smoothed, and **alpha flickering** is introduced to simulate breathing/starlight.
 
-### Animated Properties
+### 2. Enhanced `NoiseBlob` with Layered Glow + Halo Rings
 
-- **Perlin noise** provides smooth randomness for motion, size, pulsation, and direction.
-- **Trigonometry + time (frameCount)** drive rotating rings and dot pulsations.
-- **Randomness** determines appearance variation: size, rotation, life span, and phase shifts.
+- I added **multi-ring halos**, **rotating dot rings**, and **sin+noise pulsing**.
+- The blob behaves more like a living organism, with breathing-like expansion and particle orbit.
+- Glow mode `lighter` is used strategically to enhance depth.
 
-All elements are **procedurally generated**—nothing is pre-designed or repeated.
+### 3. Fully Unified Perlin Noise System
+
+- Every element—including background, sparks, blobs, and even static holes—has Perlin-driven animation or offset.
+- This achieves a consistent aesthetic and sense of motion across the canvas.
+
+### 4. Textural Background Rework
+
+- I rebuilt the `createTexture()` function to include:
+  - Fine noise-dispersed grain
+  - Directional strokes that suggest sediment, time, or cosmic fog
+
+---
 
 ## Visual Inspiration
 
@@ -49,39 +62,24 @@ All elements are **procedurally generated**—nothing is pre-designed or repeate
 These visual references inspired me to create an animation that is **meditative**, **luminous**, and **layered**.
 I was particularly drawn to the repetitive dot structures and vibrant radial arrangements, which influenced the use of **Perlin-noise-driven rings**, **pulsing textures**, and **organic movement** in my generative work.
 
+---
+
 ## Technical Implementation
 
-Each of my objects (NoiseBlob, Radiant, Hole, Spark) is implemented as a **p5.js class**. Here's how noise drives them:
-
-- **NoiseBlob**:
-  - Uses `noise()` to control **position movement**, **radius oscillation**, and **rotation of concentric dot rings**.
-- **Radiant**:
-  - Radial beams pulse and rotate with Perlin noise, while orbiting dots distort via `noise(angle, time)`.
-- **Hole**:
-  - Static dark centers with procedural glow and **noisy rim dot placement**.
-- **Spark**:
-  - Particles wander using angle-based noise and shift color intensity with age.
-
-### Libraries & Techniques
-
-- **p5.js**
-- `createGraphics()` for static textured backgrounds
-- `globalCompositeOperation = 'lighter'` for additive blending
-- `noise()` from `p5.js` for all procedural variation
-
-## External References / Techniques
-
-- Learned blending mode setup from:
-  - [p5.js blending example](https://p5js.org/reference/#/p5/blendMode)
-- Dot ring generation adapted from radial geometry concepts in:
-  - The Coding Train – [Perlin Noise tutorial](https://www.youtube.com/watch?v=ikqXe3pD1dA)
-- Noise-based motion from:
-  - [p5.js Noise Walk Example](https://editor.p5js.org/codingtrain/sketches/FdJkDoMni)
+- Use `createGraphics()` to implement separate background layers;
+- Introduced `globalCompositeOperation = “lighter”` for more realistic light overlays;
+- Dynamic tempo control is based on `frameCount`, combined with `noise()` and `sin()` for local and global linkage;
+- All classes have independent `update()` and `show()` methods, the code structure is clear and easy to extend.
 
 ---
 
-## Modifications to Group Code
+## External References / Techniques
 
-- I **rewrote most visual components** to use `Perlin noise` as their core behavior driver.
-- Implemented **multiple new classes**, dot rendering logic, and background generation techniques.
-- Extended particle systems with **glow, flicker, and orbit effects** using `frameCount` and `noise()`.
+- Comments for all key functions and classes are kept and extended in my code;
+- Function descriptions are provided for external techniques used (e.g. Perlin noise control);
+- Background textures and particle behaviours are referenced from official p5.js examples and Coding Train tutorials, and are referenced in the comments.
+
+---
+
+## Conclusion
+This is a generative artwork constructed in code, fusing rhythmic, breathing, spatial and conceptual metaphors. Through the full application of **Perlin Noise Technology**, I have constructed a dynamic and organic visual field of life that expresses my understanding of the cycles of time, memory and fate.
