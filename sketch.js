@@ -133,11 +133,11 @@ function createTexture(g) {
     let y1 = random(height);
     let x2 = x1 + random(-100, 100);
     let y2 = y1 + random(-100, 100);
-    g.line(x1, y1, x2, y2);
+    g.line(x1, y1, x2, y2);  // Adds imperfection, evokes aged memory
   }
 }
 
-// 🌫️ NoiseBlob: Glowing fog-like entity animated with Perlin noise and pulsing size
+// NoiseBlob: Glowing fog-like entity animated with Perlin noise and pulsing size
 /**
  * Class: NoiseBlob
  * Description:
@@ -212,29 +212,29 @@ class NoiseBlob {
  */
 class Spark {
   constructor() {
-    this.reset();
+    this.reset(); // Initialize with random position and properties
     this.type = random() > 0.7 ? "line" : "dot";
-    this.noiseScale = random(0.01, 0.05);
+    this.noiseScale = random(0.01, 0.05); // Scale for Perlin noise influence
     this.noiseOffsetX = random(1000);
     this.noiseOffsetY = random(1000);
   }
 
   reset() {
     this.pos = createVector(random(width), random(height));
-    this.vel = p5.Vector.random2D().mult(0.5);
+    this.vel = p5.Vector.random2D().mult(0.5); // Initial small movement
     this.size = random(1, 3);
-    this.baseAlpha = random(50, 150);
-    this.colorVariation = random(100);
-    this.life = random(100, 500);
+    this.baseAlpha = random(50, 150); // Controls flicker strength
+    this.colorVariation = random(100); // Slight hue shifting per spark
+    this.life = random(100, 500); // Particle lifetime
     this.age = 0;
   }
 
   update() {
     let angle = noise(this.pos.x * this.noiseScale, this.pos.y * this.noiseScale, frameCount * 0.01) * TWO_PI * 2;
-    this.vel.add(createVector(cos(angle), sin(angle)).mult(0.05));
-    this.vel.limit(1);
+    this.vel.add(createVector(cos(angle), sin(angle)).mult(0.05)); // Direction nudging
+    this.vel.limit(1); // Limit speed to prevent excessive drift
     this.pos.add(this.vel);
-    if (++this.age > this.life || !this.onCanvas()) this.reset();
+    if (++this.age > this.life || !this.onCanvas()) this.reset(); // Reset when expired or off-screen
   }
 
   onCanvas() {
@@ -245,14 +245,18 @@ class Spark {
     let alpha = this.baseAlpha * (0.5 + 0.5 * sin(this.age * 0.05));
     let col = [255 - this.colorVariation, 215 - this.colorVariation * 0.5, 130 + this.colorVariation * 0.3];
     if (this.type === "line") {
+      // Draw as a flickering line
       let angle = noise(this.pos.x * 0.01, this.pos.y * 0.01, frameCount * 0.01) * TWO_PI;
       stroke(...col, alpha);
       strokeWeight(this.size * 0.5);
       line(this.pos.x, this.pos.y, this.pos.x + cos(angle) * this.size * 3, this.pos.y + sin(angle) * this.size * 3);
     } else {
+      // Draw as a glowing dot
       noStroke();
       fill(...col, alpha);
       ellipse(this.pos.x, this.pos.y, this.size * (1 + noise(frameCount * 0.1) * 0.5));
+      
+      // Soft outer aura
       fill(...col, alpha * 0.3);
       ellipse(this.pos.x, this.pos.y, this.size * 3 * (1 + noise(frameCount * 0.1 + 10) * 0.2));
     }
@@ -269,23 +273,24 @@ class Spark {
 class Radiant {
   constructor() {
     this.pos = createVector(random(width), random(height));
-    this.r = random(10, 50);
-    this.n = int(random(20, 100));
-    this.alpha = random(40, 120);
-    this.angle = random(TWO_PI);
-    this.rotSpeed = random(0.001, 0.02);
-    this.lineLength = random(15, 40);
-    this.depth = random(1);
-    this.pulsePhase = random(TWO_PI);
-    this.noiseOffset = random(1000);
+    this.r = random(10, 50); // Radius of center zone
+    this.n = int(random(20, 100)); // Number of rays
+    this.alpha = random(40, 120); // Base opacity
+    this.angle = random(TWO_PI); // Rotation angle
+    this.rotSpeed = random(0.001, 0.02); // Speed of rotation
+    this.lineLength = random(15, 40); // Length of each ray
+    this.depth = random(1); // For z-depth sorting or visual layering
+    this.pulsePhase = random(TWO_PI); // Used to animate length pulsing
+    this.noiseOffset = random(1000); // NEW: Adds slight jitter to rotation
   }
 
   update() {
-    let noiseRot = noise(this.noiseOffset) * 0.04 - 0.02;
-    this.angle += this.rotSpeed * map(this.depth, 0, 1, 0.8, 1.2) + noiseRot;
-    this.pulsePhase += random(0.01, 0.03);
-    this.currentLength = this.lineLength * (0.8 + sin(this.pulsePhase) * 0.2);
+    let noiseRot = noise(this.noiseOffset) * 0.04 - 0.02; // Subtle noise-based rotation jitter
+    this.angle += this.rotSpeed * map(this.depth, 0, 1, 0.8, 1.2) + noiseRot; 
+    this.pulsePhase += random(0.01, 0.03); // Pulsing speed
+    this.currentLength = this.lineLength * (0.8 + sin(this.pulsePhase) * 0.2); // Pulsing effect
     this.noiseOffset += 0.01;
+    // Slight drifting motion
     let n = noise(this.noiseOffset * 2) * TWO_PI;
     this.pos.add(createVector(cos(n), sin(n)).mult(0.1 * this.depth));
     this.pos.x = (this.pos.x + width) % width;
@@ -304,6 +309,7 @@ class Radiant {
       let noisyLength = this.currentLength * (0.9 + noise(i * 0.1, frameCount * 0.01) * 0.2);
       line(cos(a) * this.r, sin(a) * this.r, cos(a) * (this.r + noisyLength), sin(a) * (this.r + noisyLength));
     }
+    // Soft glowing core
     noStroke();
     fill(255, 240, 180, strokeAlpha * 0.5);
     ellipse(0, 0, this.r * 0.5);
@@ -321,9 +327,10 @@ class Radiant {
 class Hole {
   constructor() {
     this.pos = createVector(random(width), random(height));
-    this.r = random(5, 10);
-    this.innerR = this.r * random(0.3, 0.7);
+    this.r = random(5, 10); // Outer radius
+    this.innerR = this.r * random(0.3, 0.7); // Inner brighter core
     this.innerColor = color(20 + random(-10, 10), 10 + random(-5, 5), 30 + random(-10, 10));
+    // Deep purple tone for subtle inner glow
     this.noiseOffsetX = random(1000);
     this.noiseOffsetY = random(1000);
   }
@@ -341,10 +348,14 @@ class Hole {
     push();
     translate(this.pos.x, this.pos.y);
     noStroke();
+    fill(0, 50); // Slightly transparent black for depth
     fill(0);
     ellipse(0, 0, this.r * 2);
+    // Inner glowing core
     fill(this.innerColor);
     ellipse(0, 0, this.innerR * 2);
+    // Subtle outer glow 
+    // Accent highlight to imply depth
     fill(60, 50, 80, 100);
     ellipse(this.r * 0.2, -this.r * 0.2, this.r * 0.3);
     pop();
