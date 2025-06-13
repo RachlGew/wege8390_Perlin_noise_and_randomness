@@ -1,5 +1,5 @@
 # Generative Perlin Wheel: "Shimmering Life Layers" 
-This project is a generative art work implemented using p5.js, inspired by Yayoi Kusama's Polka Dot Art and Pacita Abad's Wheels of Fortune. The work drives multiple visual elements through Perlin noise, making them flow, breathe, and glow in the picture, creating a dynamic picture with a sense of meditation, rhythm, and depth.
+This project is a generative art work implemented using p5.js, inspired by Pacita Abad's Wheels of Fortune and Yayoi Kusama's Polka Dot Art. The work drives multiple visual elements through Perlin noise, making them flow, breathe, and glow in the picture, creating a dynamic picture with a sense of meditation, rhythm, and depth.
 
 ---
 
@@ -18,13 +18,13 @@ There are **no required interactions** — just open the page and let the animat
 
 ## Design Concept and Visual Inspiration
 
-- **Yayoi Kusama’s dotted patterns**
-Her polka dot pattern inspired me to add a lot of **ring dots and particles** to reflect the repetitive and cyclical nature of life. Supporting browser window size changes, the visual elements automatically scale to fit the screen.
- ![Yayoi Kusama’s dotted patterns](images/PolkaDotInstallation.jpg)
-
 - **Pacita Abad's 'Wheels of fortune'** 
 Her work uses concentric circles and layered visual structures to express the flow of destiny, which inspired me to add rotating wheels of light and circular breathing elements to the visual structures.
-![Pacita Abad's 'Wheels of fortune'](images/Pacita-Abad-Wheels-of-fortune.jpg)
+_Figure 1_![Pacita Abad's 'Wheels of fortune'](images/Pacita-Abad-Wheels-of-fortune.jpg)
+
+- **Yayoi Kusama’s dotted patterns**
+Her polka dot pattern inspired me to add a lot of **ring dots and particles** to reflect the repetitive and cyclical nature of life. Supporting browser window size changes, the visual elements automatically scale to fit the screen.
+_Figure 2_![Yayoi Kusama’s dotted patterns](images/PolkaDotInstallation.jpg)
 
 The four types of visual elements in the work each symbolise different metaphors of life:
 
@@ -103,10 +103,10 @@ While the `Spark`, `NoiseBlob`, and other elements were part of our group codeba
 
 ### Reference For Inspiration Code
 Mascaria. (n.d.). harvest [Processing code]. OpenProcessing. https://openprocessing.org/sketch/2064890
-![Perlin Noise OpenProcessing Reference](images/openprocessing.gif)
+_Figure 3_![Perlin Noise OpenProcessing Reference](images/openprocessing.gif)
 
 Mascaria. (n.d.). Restart [Processing code]. OpenProcessing. https://openprocessing.org/sketch/2018713
-![Perlin Noise OpenProcessing Reference](images/blueperlinnoise.gif)
+_Figure 4_![Perlin Noise OpenProcessing Reference](images/blueperlinnoise.gif)
 
 These two art works
 - Inspired glowing orbiting particles and central radial lines.
