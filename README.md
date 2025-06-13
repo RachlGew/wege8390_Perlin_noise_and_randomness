@@ -3,7 +3,6 @@ This project is a generative art work implemented using p5.js, inspired by Pacit
 
 ---
 
-
 ## Interaction Instructions
 There are **no required interactions** — just open the page and let the animation evolve:
 1. Open project in **Visual Studio Code**  
@@ -14,17 +13,15 @@ There are **no required interactions** — just open the page and let the animat
 
 ---
 
-
-
 ## Design Concept and Visual Inspiration
 
 - **Pacita Abad's 'Wheels of fortune'** 
 Her work uses concentric circles and layered visual structures to express the flow of destiny, which inspired me to add rotating wheels of light and circular breathing elements to the visual structures.
-- _Figure 1_![Pacita Abad's 'Wheels of fortune'](images/Pacita-Abad-Wheels-of-fortune.jpg)
+  - _Figure 1_![Pacita Abad's 'Wheels of fortune'](images/Pacita-Abad-Wheels-of-fortune.jpg)
 
 - **Yayoi Kusama’s dotted patterns**
 Her polka dot pattern inspired me to add a lot of **ring dots and particles** to reflect the repetitive and cyclical nature of life. Supporting browser window size changes, the visual elements automatically scale to fit the screen.
-- _Figure 2_![Yayoi Kusama’s dotted patterns](images/PolkaDotInstallation.jpg)
+  - _Figure 2_![Yayoi Kusama’s dotted patterns](images/PolkaDotInstallation.jpg)
 
 The four types of visual elements in the work each symbolise different metaphors of life:
 
@@ -43,6 +40,7 @@ To achieve the ability to adapt to arbitrary screen sizes, all graphical element
 
 Visually, the layering and luminescence of the artwork was enhanced by adding a static background of particles and scratch textures to the screen, overlaying elements in motion, and using `globalCompositeOperation = 'lighter'` to allow for luminescent blending between the different clusters of light.
 
+---
 
 ## Individual Approach
 
@@ -83,7 +81,6 @@ While the `Spark`, `NoiseBlob`, and other elements were part of our group codeba
   - Fine noise-dispersed grain
   - Directional strokes that suggest sediment, time, or cosmic fog
 
-
 ---
 
 ## Technical Implementation
@@ -103,14 +100,14 @@ While the `Spark`, `NoiseBlob`, and other elements were part of our group codeba
 
 ### Reference For Inspiration Code
 - Mascaria. (n.d.). harvest [Processing code]. OpenProcessing. https://openprocessing.org/sketch/2064890
-- _Figure 3_![Perlin Noise OpenProcessing Reference](images/openprocessing.gif)
+  - _Figure 3_![Perlin Noise OpenProcessing Reference](images/openprocessing.gif)
 
 - Mascaria. (n.d.). Restart [Processing code]. OpenProcessing. https://openprocessing.org/sketch/2018713
-- _Figure 4_![Perlin Noise OpenProcessing Reference](images/blueperlinnoise.gif)
+  - _Figure 4_![Perlin Noise OpenProcessing Reference](images/blueperlinnoise.gif)
 
-These two art works
-- Inspired glowing orbiting particles and central radial lines.
-- Adapted techniques for rotating dot rings and smooth light trails.
+- These two art works
+  - Inspired glowing orbiting particles and central radial lines.
+  - Adapted techniques for rotating dot rings and smooth light trails.
 
 ---
 
