@@ -3,14 +3,46 @@ This project is a generative art work implemented using p5.js, inspired by Yayoi
 
 ---
 
+
 ## Interaction Instructions
 There are **no required interactions** — just open the page and let the animation evolve:
 1. Open project in **Visual Studio Code**  
 2. Right-click `index.html` → **Open with Live Server**  
 3. Animation auto-plays upon loading  
 4. Observe organic evolution: forms continuously generate, grow, and fade  
+5. Support for browser window size changes, visual elements are automatically scaled to fit the screen.
 
 ---
+
+
+
+## Design Concept and Visual Inspiration
+
+- **Yayoi Kusama’s dotted patterns**
+Her polka dot pattern inspired me to add a lot of **ring dots and particles** to reflect the repetitive and cyclical nature of life. Supporting browser window size changes, the visual elements automatically scale to fit the screen.
+ ![Yayoi Kusama’s dotted patterns](images/PolkaDotInstallation.jpg)
+
+- **Pacita Abad's 'Wheels of fortune'** 
+Her work uses concentric circles and layered visual structures to express the flow of destiny, which inspired me to add rotating wheels of light and circular breathing elements to the visual structures.
+![Pacita Abad's 'Wheels of fortune'](images/Pacita-Abad-Wheels-of-fortune.jpg)
+
+The four types of visual elements in the work each symbolise different metaphors of life:
+
+- **NoiseBlob**: a floating, breathing mass of light like fog, representing the flow of time and life.
+- **Radiant**: radiating, rotating light, symbolising energy, awakening or significant moments.
+- **Hole**: a black void, symbolising the absence of memory and emotional gaps.
+- **Spark**: a flickering particle representing a fleeting memory or experience.
+
+---
+
+## Technical Description
+
+The motion of all elements is controlled by **Perlin noise** and **Sinusoidal function**, simulating the **randomness** and coherence found in the natural world.
+
+To achieve the ability to adapt to arbitrary screen sizes, all graphical elements use normalised coordinates (0 to 1) and recalculate their specific pixel positions and sizes as the window size changes.
+
+Visually, the layering and luminescence of the artwork was enhanced by adding a static background of particles and scratch textures to the screen, overlaying elements in motion, and using `globalCompositeOperation = 'lighter'` to allow for luminescent blending between the different clusters of light.
+
 
 ## Individual Approach
 
@@ -38,7 +70,7 @@ While the `Spark`, `NoiseBlob`, and other elements were part of our group codeba
 
 - I added **multi-ring halos**, **rotating dot rings**, and **sin+noise pulsing**.
 - The blob behaves more like a living organism, with breathing-like expansion and particle orbit.
-- Glow mode `lighter` is used strategically to enhance depth.
+- **The inspiration for these dots came directly from the repetitive polka dot pattern in Yayoi Kusama's work**, and I wanted to reproduce the visual impact of that ‘endless loop’ programmatically.
 
 ### 3. Fully Unified Perlin Noise System
 
@@ -51,16 +83,6 @@ While the `Spark`, `NoiseBlob`, and other elements were part of our group codeba
   - Fine noise-dispersed grain
   - Directional strokes that suggest sediment, time, or cosmic fog
 
----
-
-## Visual Inspiration
-
-- Yayoi Kusama’s dotted patterns ![Yayoi Kusama’s dotted patterns](images/PolkaDotInstallation.jpg)
-
-- Pacita Abad's 'Wheels of fortune' ![Pacita Abad's 'Wheels of fortune'](images/Pacita-Abad-Wheels-of-fortune.jpg)
-
-These visual references inspired me to create an animation that is **meditative**, **luminous**, and **layered**.
-I was particularly drawn to the repetitive dot structures and vibrant radial arrangements, which influenced the use of **Perlin-noise-driven rings**, **pulsing textures**, and **organic movement** in my generative work.
 
 ---
 
@@ -79,13 +101,14 @@ I was particularly drawn to the repetitive dot structures and vibrant radial arr
 - Function descriptions are provided for external techniques used (e.g. Perlin noise control);
 - Background textures and particle behaviours are referenced from official p5.js examples and Coding Train tutorials, and are referenced in the comments.
 
-### OpenProcessing Reference
-[Perlin Noise OpenProcessing Reference](images/openprocessing.gif)
-Source: https://openprocessing.org/sketch/2064890
+### Reference For Inspiration Code
+Mascaria. (n.d.). harvest [Processing code]. OpenProcessing. https://openprocessing.org/sketch/2064890
+![Perlin Noise OpenProcessing Reference](images/openprocessing.gif)
 
-[Perlin Noise OpenProcessing Reference](images/blueperlinnoise.gif)
-Source: https://openprocessing.org/sketch/2018713
+Mascaria. (n.d.). Restart [Processing code]. OpenProcessing. https://openprocessing.org/sketch/2018713
+![Perlin Noise OpenProcessing Reference](images/blueperlinnoise.gif)
 
+These two art works
 - Inspired glowing orbiting particles and central radial lines.
 - Adapted techniques for rotating dot rings and smooth light trails.
 
